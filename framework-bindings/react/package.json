@@ -1,0 +1,46 @@
+{
+  "name": "@storage/react-storage-plugin-groups-list",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "description": "HPE React specific wrapper for storage plugin groups list project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.hpe.com/cloud/storage-plugin-groups-list"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "compile": "npm run tsc",
+    "tsc": "tsc -p ."
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.17",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "jest": "^26.6.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^1.21.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "typescript": "^4.6.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  },
+  "dependencies": {
+    "@storage/storage-plugin-groups-list": "0.0.1"
+  }
+}

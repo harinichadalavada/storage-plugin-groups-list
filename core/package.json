@@ -1,0 +1,83 @@
+{
+  "name": "@storage/storage-plugin-groups-list",
+  "description": "Storage Plugin groups exists to provide user an UI to to display the total number of associated groups and view them.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.hpe.com/cloud/storage-plugin-groups-list"
+  },
+  "version": "0.0.1",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/stencil-plugin/stencil-plugin.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "start": "npm-run-all -p start-storybook watch",
+    "build": "stencil build --docs --purge",
+    "clean": "rimraf ./dist ./docs-build",
+    "format:check": "npx prettier --check .",
+    "format:update": "npx prettier --write .",
+    "start-storybook": "npm run build && start-storybook --docs --no-manager-cache",
+    "watch": "stencil build --watch --docs --purge",
+    "test-unit": "stencil test --spec",
+    "test-e2e": "stencil test --e2e",
+    "test-unit.watch": "stencil test --spec --watchAll",
+    "test:open": "npm-run-all -p cypress-server cypress-open",
+    "cypress-server": "stencil build --serve --watch --docs",
+    "cypress-coverage": "npx nyc report",
+    "test:run": "npm run cypress-server & (sleep 180s && npm run cypress-run)",
+    "cypress-open": "cypress open",
+    "cypress-run": "cypress run",
+    "build-storybook": "build-storybook --docs -o docs-build",
+    "deploy": "gh-pages -t -d docs-build -u \"cds-github-ci <cds-github-ci@hpe.com>\"",
+    "predeploy": "npm run build-package-storybook",
+    "build-package-storybook": "npm run build && npm run build-storybook"
+  },
+  "dependencies": {
+    "@stencil/core": "^2.19.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.0",
+    "@faker-js/faker": "^7.6.0",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@stencil/postcss": "^2.1.0",
+    "@stencil/react-output-target": "0.3.1",
+    "@storage/dscc-storage-styles": "latest",
+    "@storage/storybook-addon": "^0.1.1",
+    "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/manager-webpack5": "^6.5.13",
+    "@testing-library/cypress": "^8.0.7",
+    "@types/jest": "^27.0.3",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^9.1.0",
+    "cssnano": "^5.0.8",
+    "cypress": "^10.11.0",
+    "gh-pages": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.0.3",
+    "jest-cli": "^27.4.5",
+    "jest-transform-stub": "^2.0.0",
+    "miragejs": "^0.1.46",
+    "npm-run-all": "^4.1.5",
+    "postcss-replace": "^1.1.3",
+    "puppeteer": "^10.0.0",
+    "puppeteer-core": "^5.2.1",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-istanbul": "^4.0.0",
+    "stencil-inline-svg": "^1.0.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "typescript": "^4.9.3",
+    "workbox-build": "^6.5.4"
+  },
+  "nyc": {
+    "exclude": [
+      "src/mirage/*"
+    ]
+  }
+}

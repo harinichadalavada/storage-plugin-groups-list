@@ -1,4 +1,6 @@
 // (C) Copyright 2023 Hewlett Packard Enterprise Development LP
+import { API_VERSION_PATH } from "../src/constants/apiversion"
+
 function generateErrorResponse(message) {
   return {
     status: "error",
@@ -7,7 +9,7 @@ function generateErrorResponse(message) {
   }
 }
 
-const apiVersion = "/api/v1"
+const apiVersion = API_VERSION_PATH
 
 class GroupsAPI {
   constructor() {}

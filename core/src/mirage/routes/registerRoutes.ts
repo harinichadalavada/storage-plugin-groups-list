@@ -1,10 +1,11 @@
 // (C) Copyright 2023 Hewlett Packard Enterprise Development LP
 import { Server } from "miragejs"
 import { processCollectionRequest } from "../utils"
+import { API_VERSION_PATH } from "../../../src/constants/apiversion"
 
 export function registerRoutes(context: Server) {
   return [
-    (context.namespace = "/api/v1"),
+    (context.namespace = API_VERSION_PATH),
     context.get("/groups", (schema, request) => {
       const processedCollection = processCollectionRequest(schema, request, "groups")
       return processedCollection
